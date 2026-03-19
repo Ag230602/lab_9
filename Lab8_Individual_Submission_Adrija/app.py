@@ -4,6 +4,17 @@ import requests
 import streamlit as st
 
 
+def normalize_api_url(url: str) -> str:
+    cleaned = (url or "").strip().rstrip("/")
+    if not cleaned:
+        return "http://localhost:8000"
+    if cleaned.startswith(("http://", "https://")):
+        return cleaned
+    if cleaned.startswith("localhost") or cleaned.startswith("127.0.0.1"):
+        return f"http://{cleaned}"
+    return f"https://{cleaned}"
+
+
 st.set_page_config(page_title="Disaster Forecast AI Application", layout="wide")
 st.title("Disaster Forecast AI Application")
 st.write(
@@ -27,8 +38,8 @@ with st.sidebar:
             ]
         )
     )
-    default_api_url = os.getenv("API_URL", "http://localhost:8000")
-    api_url = st.text_input("API URL", default_api_url)
+    default_api_url = normalize_api_url(os.getenv("API_URL", "http://localhost:8000"))
+    api_url = normalize_api_url(st.text_input("API URL", default_api_url))
 
 st.subheader("Application Workflow")
 st.markdown(

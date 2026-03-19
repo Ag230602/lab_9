@@ -10,6 +10,7 @@ This project is prepared for deployment with Render using the included `render.y
   Runs the Streamlit frontend
 
 The UI reads the backend address from the `API_URL` environment variable.
+In `render.yaml`, this is wired from the API service `url` property, so the frontend receives a full HTTPS URL automatically.
 
 ## Deploy On Render
 
@@ -28,6 +29,12 @@ The UI reads the backend address from the `API_URL` environment variable.
   `https://disaster-forecast-ui.onrender.com`
 
 Use the UI URL as your application link for submission.
+
+## Troubleshooting API Connection
+
+- If the UI shows it cannot connect to FastAPI, confirm both Render services are `Live`.
+- Ensure `API_URL` is populated in the UI service environment.
+- `API_URL` should be a full URL such as `https://disaster-forecast-api.onrender.com` (not `localhost`).
 
 ## Important Notes
 

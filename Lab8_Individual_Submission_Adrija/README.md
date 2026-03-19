@@ -104,6 +104,8 @@ Frontend:
 streamlit run app.py
 ```
 
+When running the frontend in a deployed environment, set `API_URL` to your public backend URL (for example `https://disaster-forecast-api.onrender.com`) instead of `localhost`.
+
 ## Notes On The Model
 
 The repository includes the LoRA adapter artifacts in `lab8_adapted_model/`. To run full model generation locally, set `LOCAL_BASE_MODEL_PATH` to a downloaded compatible base model directory. If no local base model is available, the app still works and returns a grounded fallback answer using retrieval plus warehouse facts.

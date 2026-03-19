@@ -20,4 +20,4 @@ services:
         fromService:
           type: web
           name: disaster-forecast-api
-          property: hostport
+          property: url
