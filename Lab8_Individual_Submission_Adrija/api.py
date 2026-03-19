@@ -52,6 +52,11 @@ def health_check():
     return agent.health()
 
 
+@app.get("/healthz", response_model=HealthResponse)
+def health_check_z():
+    return agent.health()
+
+
 @app.post("/generate", response_model=QueryResponse)
 def generate_explanation(request: QueryRequest):
     started = perf_counter()
