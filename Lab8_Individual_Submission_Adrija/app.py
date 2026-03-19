@@ -15,6 +15,16 @@ def normalize_api_url(url: str) -> str:
     return f"https://{cleaned}"
 
 
+def get_default_api_url() -> str:
+    env_url = os.getenv("API_URL")
+    secret_url = None
+    try:
+        secret_url = st.secrets.get("API_URL")
+    except Exception:
+        secret_url = None
+    return normalize_api_url(env_url or secret_url or "http://localhost:8000")
+
+
 st.set_page_config(page_title="Disaster Forecast AI Application", layout="wide")
 st.title("Disaster Forecast AI Application")
 st.write(
@@ -38,7 +48,7 @@ with st.sidebar:
             ]
         )
     )
-    default_api_url = normalize_api_url(os.getenv("API_URL", "http://localhost:8000"))
+    default_api_url = get_default_api_url()
     api_url = normalize_api_url(st.text_input("API URL", default_api_url))
 
 st.subheader("Application Workflow")
