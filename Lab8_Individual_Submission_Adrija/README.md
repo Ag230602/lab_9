@@ -152,3 +152,5 @@ git push
 ## Deployment
 
 This repository includes `render.yaml` and `DEPLOYMENT.md` so you can deploy both the FastAPI backend and the Streamlit frontend from GitHub using Render.
+
+As an alternative, use `RAILWAY_DEPLOYMENT.md` for deploying the same two-service setup on Railway.
