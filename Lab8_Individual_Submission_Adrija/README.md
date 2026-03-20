@@ -101,7 +101,7 @@ uvicorn api:app --reload
 Frontend:
 
 ```bash
-streamlit run app.py
+https://cqbvrfmxw86jpcb9qw5bhg.streamlit.app/
 ```
 
 When running the frontend in a deployed environment, set `API_URL` to your public backend URL (for example `https://disaster-forecast-api.onrender.com`) instead of `localhost`.
